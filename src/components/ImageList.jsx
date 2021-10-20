@@ -1,11 +1,17 @@
 import Image from "./Image";
 
-function ImageList() {
-  const images = Array.from("x".repeat(8));
+function ImageList({ images, searchText }) {
+  const getFilteredImagesByTagName = () => {
+    if (!searchText.length) return images;
+    return images.filter(function (image) {
+      return image.tagName?.includes(searchText);
+    });
+  };
+
   return (
     <div className="imagelist">
-      {images.map((image) => (
-        <Image />
+      {getFilteredImagesByTagName().map((image, index) => (
+        <Image key={index} image={image} />
       ))}
     </div>
   );
