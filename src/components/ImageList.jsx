@@ -11,7 +11,7 @@ function ImageList({ images, searchText }) {
   return (
     <div className="imagelist">
       {getFilteredImagesByTagName().map((image, index) => (
-        <Image key={index} image={image} />
+        <Image small={image} large={image} key={index} image={image} />
       ))}
     </div>
   );

@@ -1,8 +1,13 @@
+import ModalImage from "react-modal-image";
 function Image({ image }) {
   return (
     <div className="image-div">
-      <img className="image" src={URL.createObjectURL(image)}></img>
-      <button>x</button>
+      <ModalImage
+        className="image"
+        small={URL.createObjectURL(image)}
+        large={URL.createObjectURL(image)}
+      />
+      <button className="delete-button">x</button>
     </div>
   );
 }
