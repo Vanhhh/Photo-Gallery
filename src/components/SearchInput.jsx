@@ -1,17 +1,69 @@
+import styled from "styled-components";
+const theme = {
+  lightgrey: "#cccccc",
+  lightergrey: "#eeeeee",
+};
+const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  z-index: 3;
+`;
+const WrapperContent = styled.div`
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 0;
+`;
+const Search = styled.div`
+  display: flex;
+  align-items: center;
+  &:hover {
+    .fa-search {
+      color: ${(props) => props.theme.lightgrey};
+    }
+  }
+  .fa-search {
+    transition: all 0.3s linear;
+  }
+`;
+
+const Input = styled.input`
+  display: block;
+  height: 50px;
+  width: 500px;
+  margin: 10px;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  transition: all 0.3s linear;
+  background: ${(props) => props.theme.lightergrey};
+  &:focus {
+    outline: ${(props) => props.theme.lightgrey};
+  }
+  &:hover {
+    box-shadow: 2px 5px 5px ${(props) => props.theme.lightgrey};
+  }
+`;
 function SearchInput({ searchText, onSearchTextChanged }) {
   return (
-    <div className="search-wrapper">
-      <p className="wrapper-content">
+    <SearchWrapper>
+      <WrapperContent>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <div className="search">
+      </WrapperContent>
+      <Search theme={theme}>
         <div>
           <i className="fa fa-search"></i>
         </div>
         <div>
-          <input
-            className="search-input"
+          <Input
+            theme={theme}
             placeholder="Search image"
             type="search"
             id="site-search"
@@ -23,8 +75,8 @@ function SearchInput({ searchText, onSearchTextChanged }) {
             }}
           />
         </div>
-      </div>
-    </div>
+      </Search>
+    </SearchWrapper>
   );
 }
 

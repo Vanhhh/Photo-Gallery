@@ -1,8 +1,15 @@
 import "./App.scss";
-import ImageList from "./components/ImageList";
+import Image from "./components/Image";
 import SearchInput from "./components/SearchInput";
 import AddButton from "./components/AddButton";
 import { useState } from "react";
+import styled from "styled-components";
+
+const ImageListDiv = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+`;
 
 function App() {
   const [images, setImages] = useState([]);
@@ -13,10 +20,13 @@ function App() {
     if (image) {
       const imageTagName = prompt("Provide a tag name for this image");
       image.tagName = imageTagName;
-      setImages([...images, image]);
+      setImages([image, ...images]);
     }
   };
-
+  const deleteImage = (image) => {
+    const newList = images.filter((i) => i.name !== image.name);
+    setImages(newList);
+  };
   return (
     <div className="App">
       <div className="banner">
@@ -29,7 +39,19 @@ function App() {
           onSearchTextChanged={setSearchText}
         />
       </div>
-      <ImageList images={images} searchText={searchText} />
+      <ImageListDiv>
+        {images
+          .filter((image) => image.tagName?.includes(searchText))
+          .map((image) => (
+            <Image
+              key={image.name}
+              onDeleteImage={deleteImage}
+              small={image}
+              large={image}
+              image={image}
+            />
+          ))}
+      </ImageListDiv>
     </div>
   );
 }
