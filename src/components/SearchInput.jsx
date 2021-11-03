@@ -17,6 +17,7 @@ const WrapperContent = styled.div`
   font-weight: 500;
   line-height: 20px;
   margin-top: 0;
+  margin-left: 6px;
 `;
 const Search = styled.div`
   display: flex;
@@ -54,8 +55,8 @@ function SearchInput({ searchText, onSearchTextChanged }) {
   return (
     <SearchWrapper>
       <WrapperContent>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Welcome! Click on the "Upload button" to upload picture to the gallery
+        and give a tag name to the picture. You can search image down here.
       </WrapperContent>
       <Search theme={theme}>
         <div>
