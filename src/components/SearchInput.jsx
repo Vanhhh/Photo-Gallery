@@ -19,18 +19,6 @@ const WrapperContent = styled.div`
   margin-top: 0;
   margin-left: 6px;
 `;
-const Search = styled.div`
-  display: flex;
-  align-items: center;
-  &:hover {
-    .fa-search {
-      color: ${(props) => props.theme.lightgrey};
-    }
-  }
-  .fa-search {
-    transition: all 0.3s linear;
-  }
-`;
 
 const Input = styled.input`
   display: block;
@@ -47,10 +35,23 @@ const Input = styled.input`
   &:focus {
     outline: ${(props) => props.theme.lightgrey};
   }
+`;
+const Search = styled.div`
+  display: flex;
+  align-items: center;
   &:hover {
-    box-shadow: 2px 5px 5px ${(props) => props.theme.lightgrey};
+    .fa-search {
+      color: ${(props) => props.theme.lightgrey};
+    }
+    ${Input} {
+      box-shadow: 2px 5px 5px ${(props) => props.theme.lightgrey};
+    }
+  }
+  .fa-search {
+    transition: all 0.3s linear;
   }
 `;
+
 function SearchInput({ searchText, onSearchTextChanged }) {
   return (
     <SearchWrapper>
